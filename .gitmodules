@@ -1,0 +1,36 @@
+[submodule "puppet-site/modules/tomcat"]
+	path = puppet-site/modules/tomcat
+	url = https://github.com/camptocamp/puppet-tomcat.git
+[submodule "puppet-site/modules/stdlib"]
+	path = puppet-site/modules/stdlib
+	url = git://github.com/puppetlabs/puppetlabs-stdlib.git
+[submodule "puppet-site/modules/archive"]
+	path = puppet-site/modules/archive
+	url = git@github.com:camptocamp/puppet-archive.git
+[submodule "puppet-site/modules/concat"]
+	path = puppet-site/modules/concat
+	url = git@github.com:puppetlabs/puppetlabs-concat.git
+[submodule "puppet-site/modules/concat_native"]
+	path = puppet-site/modules/concat_native
+	url = https://github.com/theforeman/puppet-concat_native.git
+[submodule "puppet-site/modules/monit"]
+	path = puppet-site/modules/monit
+	url = https://github.com/meltwater/puppet-monit.git
+[submodule "puppet-site/modules/systemd"]
+	path = puppet-site/modules/systemd
+	url = https://github.com/camptocamp/puppet-systemd.git
+[submodule "puppet-site/modules/augeasproviders"]
+	path = puppet-site/modules/augeasproviders
+	url = https://github.com/hercules-team/augeasproviders_shellvar.git
+[submodule "puppet-site/modules/nginx"]
+	path = puppet-site/modules/nginx
+	url = https://github.com/jfryman/puppet-nginx.git
+[submodule "puppet-site/modules/haproxy"]
+	path = puppet-site/modules/haproxy
+	url = https://github.com/puppetlabs/puppetlabs-haproxy.git
+[submodule "puppet-site/modules/epel"]
+	path = puppet-site/modules/epel
+	url = https://github.com/stahnma/puppet-module-epel.git
+[submodule "puppet-site/modules/java"]
+	path = puppet-site/modules/java
+	url = https://github.com/puppetlabs/puppetlabs-java.git

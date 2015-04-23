@@ -1,0 +1,11 @@
+---
+classes:
+  - monit
+  - java
+  - webapp
+  - webapp::instance
+
+webapp::instance::instance:
+  0:
+    appid: 'company-news'
+    javahome: '/etc/alternatives/jre_openjdk'

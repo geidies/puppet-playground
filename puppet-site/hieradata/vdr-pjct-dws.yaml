@@ -1,0 +1,9 @@
+---
+classes:
+  - monit
+  - staticweb
+  - staticweb::instance
+
+staticweb::instance::instance:
+  'thoughtworks.example.net':
+    listen_port: 8080

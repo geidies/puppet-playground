@@ -1,0 +1,9 @@
+---
+:backends: yaml
+:yaml:
+  :datadir: "/etc/puppet-site/hieradata"
+:hierarchy:
+  - "%{::clientcert}"
+  - "%{::hostgroupid}"
+  - common
+# :merge_behavior: deeper
