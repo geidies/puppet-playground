@@ -1,0 +1,14 @@
+server {
+  listen                *:80;
+
+  server_name           <%= $vhost %>;
+
+  index  index.html index.htm index.php;
+
+  access_log            /var/log/nginx/<%= $vhost -%>.access.log;
+  error_log             /var/log/nginx/<%= $vhost -%>.error.log;
+
+  location / {
+    root  /var/www/<%= $vhost %>;
+  }
+}

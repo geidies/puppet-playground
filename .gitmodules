@@ -31,6 +31,3 @@
 [submodule "puppet-site/modules/java"]
 	path = puppet-site/modules/java
 	url = https://github.com/puppetlabs/puppetlabs-java.git
-[submodule "puppet-site/modules/file_concat"]
-	path = puppet-site/modules/file_concat
-	url = https://github.com/electrical/puppet-lib-file_concat.git

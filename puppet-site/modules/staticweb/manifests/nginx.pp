@@ -4,10 +4,22 @@ define staticweb::nginx (
   ){
     include 'nginx'
 
-    nginx::resource::vhost { $vhost:
-      ensure      => present,
-      listen_port => $listen_port,
-      www_root    => "/var/www/$vhost",
+    # there are dependency issues between the tomcat and the nginx module.
+    # installation of the vhost fails - workaround: vhost definition as a
+    # static file
+    # 
+    # nginx::resource::vhost { $vhost:
+    #   ensure      => present,
+    #   listen_port => $listen_port,
+    #   www_root    => "/var/www/$vhost",
+    # }
+
+    file { "/etc/nginx/sites-available/$vhost.conf":
+      ensure  => present,
+      content => template("staticweb/vhost.conf.erb"),
+      owner   => 'root',
+      group   => 'root',
+      notify  => Service['nginx'],
     }
 
     file { "/var/www/$vhost":
