@@ -19,9 +19,6 @@
 [submodule "puppet-site/modules/systemd"]
 	path = puppet-site/modules/systemd
 	url = https://github.com/camptocamp/puppet-systemd.git
-[submodule "puppet-site/modules/augeasproviders"]
-	path = puppet-site/modules/augeasproviders
-	url = https://github.com/hercules-team/augeasproviders_shellvar.git
 [submodule "puppet-site/modules/nginx"]
 	path = puppet-site/modules/nginx
 	url = https://github.com/jfryman/puppet-nginx.git
@@ -34,3 +31,6 @@
 [submodule "puppet-site/modules/java"]
 	path = puppet-site/modules/java
 	url = https://github.com/puppetlabs/puppetlabs-java.git
+[submodule "puppet-site/modules/file_concat"]
+	path = puppet-site/modules/file_concat
+	url = https://github.com/electrical/puppet-lib-file_concat.git

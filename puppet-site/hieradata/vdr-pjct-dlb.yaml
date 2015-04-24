@@ -1,0 +1,41 @@
+---
+classes:
+  - loadbalance
+  - loadbalance::frontend
+  - loadbalance::backend
+
+loadbalance::backend::instance:
+  static:
+    server_names:
+      - 'vdr-pjct-pws-001'
+      - 'vdr-pjct-pws-002'
+    ip_addresses:
+      - '10.201.0.2'
+      - '10.201.0.3'
+    ports: 8080
+    options:
+      mode: 'http'
+      balance: 'roundrobin'
+  dynamic:
+    server_names:
+      - 'vdr-pjct-pas-001'
+      - 'vdr-pjct-pas-002'
+    ip_addresses:
+      - '10.201.0.12'
+      - '10.201.0.13'
+    ports: 8080
+    options:
+      mode: 'http'
+      balance: 'roundrobin'
+     
+loadbalance::frontend::instance:
+  'thoughtworks.example.net':
+    ipaddress: '*'
+    ports: '80'
+    acls:
+      - 'image url_sub /images/'
+      - 'stylesheet url_sub /styles/'
+    rules:
+      - 'static if image'
+      - 'static if stylesheet'
+    default_backend: 'dynamic'

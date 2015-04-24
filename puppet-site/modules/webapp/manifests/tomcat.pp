@@ -9,12 +9,6 @@ define webapp::tomcat (
     $user                    = 'tomcat',
 
   ){
-    class { '::tomcat':
-        sources          => true,
-        version          => 7,
-        instance_basedir => $tomcat_instance_basedir,
-    }
-
     $setenv_real = []
     $port = $baseport
     $serverport = $baseport+1
@@ -32,7 +26,12 @@ define webapp::tomcat (
       'compressableMimeType="text/html,text/xml,text/plain,application/json,application/xml"',
       'MaxThreads="250"'],
     }
-
+    
+    class { '::tomcat':
+        sources          => true,
+        version          => 7,
+        instance_basedir => $tomcat_instance_basedir,
+    } ->
     tomcat::instance { "$appid-$instanceid":
       ensure           => $ensure,
       owner            => $user,

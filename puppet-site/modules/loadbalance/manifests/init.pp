@@ -1,0 +1,3 @@
+class loadbalance {
+  include haproxy
+}
