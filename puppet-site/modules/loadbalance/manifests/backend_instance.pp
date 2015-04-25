@@ -4,6 +4,7 @@ define loadbalance::backend_instance (
     $server_names = [],
     $ip_addresses = [],
     $options = {},
+    $member_options = [],
 ){
     haproxy::backend {$listening_service:
         options => $options,
@@ -14,5 +15,6 @@ define loadbalance::backend_instance (
         ports             => $ports,
         server_names      => $server_names,
         ipaddresses       => $ip_addresses,
+        options           => $member_options,
     }
 }
