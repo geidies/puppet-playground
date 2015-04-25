@@ -18,7 +18,7 @@ basic::directory::instance:
   '/home/russell/persistence':
     owner: tomcat
     group: tomcat
-    mode: 0600
+    mode: '0600'
 
 basic::nfsmount::instance:
   '/home/russell':
