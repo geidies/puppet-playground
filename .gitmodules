@@ -34,3 +34,6 @@
 [submodule "puppet-site/modules/file_concat2"]
 	path = puppet-site/modules/file_concat2
 	url = https://github.com/Savar/puppet-file_concat.git
+[submodule "puppet-site/modules/nfs"]
+	path = puppet-site/modules/nfs
+	url = https://github.com/echocat/puppet-nfs.git
