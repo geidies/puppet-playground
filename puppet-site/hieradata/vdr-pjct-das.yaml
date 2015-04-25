@@ -13,6 +13,14 @@ webapp::instance::instance:
   0:
     appid: 'companyNews'
     javahome: '/etc/alternatives/jre_openjdk'
+    setenv: 
+      - 'ADD_JAVA_OPTS="
+      -XX:+UseParNewGC
+      -XX:+UseConcMarkSweepGC
+      -XX:CMSInitiatingOccupancyFraction=65
+      -XX:+UseCMSInitiatingOccupancyOnly
+      -XX:+UseCondCardMark
+      -XX:+CMSClassUnloadingEnabled"'
 
 basic::directory::instance:
   '/home/russell/persistence':

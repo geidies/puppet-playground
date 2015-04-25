@@ -7,9 +7,9 @@ define webapp::tomcat (
     $manage                  = true,
     $tomcat_instance_basedir = '/opt/apps/tomcat',
     $user                    = 'tomcat',
+    $setenv                  = [],
 
   ){
-    $setenv_real = []
     $port = $baseport
     $serverport = $baseport+1
     $ajpport = $baseport+2
@@ -38,7 +38,7 @@ define webapp::tomcat (
       connector        => [$appid],
       server_port      => "${serverport}",
       ajp_port         => "${ajpport}",
-      setenv           => $setenv_real,
+      setenv           => $setenv,
       instance_basedir => $tomcat_instance_basedir,
       java_home        => $javahome,
       manage           => $manage,
