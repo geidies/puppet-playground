@@ -3,8 +3,8 @@
 #
 
 def common_config cfg
-  # cfg.vm.box = "puppetlabs/centos-6.6-64-puppet"
-  cfg.vm.box = 'mw-centos6-64-8'
+  cfg.vm.box = "puppetlabs/centos-6.6-64-puppet"
+  # cfg.vm.box = 'mw-centos6-64-8'
   cfg.vm.synced_folder 'puppet-site', '/etc/puppet-site', :nfs => ENV.fetch('VAGRANT_NFS', 'true').casecmp('true') == 0
   cfg.vm.provision :shell, :inline => 'puppet apply --hiera_config /etc/puppet-site/hiera.yaml --modulepath=/etc/puppet-site/modules /etc/puppet-site/manifests/site.pp'
 end
@@ -18,7 +18,14 @@ Vagrant.configure(2) do |config|
   config.vm.define :lb_1 do |cfg|
     common_config cfg
     cfg.vm.network "private_network", ip: "10.201.0.100"
+    cfg.vm.network "forwarded_port", guest: 80, host: 8081
     cfg.vm.hostname = "vdr-pjct-dlb-001.dc.example.net"
+  end
+
+  config.vm.define :nfs_1 do |cfg|
+    common_config cfg
+    cfg.vm.network "private_network", ip: "10.201.0.200"
+    cfg.vm.hostname = "vdr-pjct-dfs-001.dc.example.net"
   end
 
   config.vm.define :web_1 do |cfg|
