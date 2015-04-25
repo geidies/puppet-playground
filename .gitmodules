@@ -24,7 +24,7 @@
 	url = https://github.com/jfryman/puppet-nginx.git
 [submodule "puppet-site/modules/haproxy"]
 	path = puppet-site/modules/haproxy
-	url = https://github.com/puppetlabs/puppetlabs-haproxy.git
+	url = https://github.com/geidies/puppetlabs-haproxy.git
 [submodule "puppet-site/modules/epel"]
 	path = puppet-site/modules/epel
 	url = https://github.com/stahnma/puppet-module-epel.git
