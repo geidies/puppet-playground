@@ -1,0 +1,16 @@
+---
+classes:
+  - basic
+  - basic::nfsexport
+  - basic::directory
+
+basic::directory::instance:
+  '/home/russell':
+    owner: root
+    group: root
+    mode: '0755'
+
+basic::nfsexport::instance:
+  '/home/russell':
+    ensure: mounted
+    clients: '10.201.0.0/24(rw,insecure,async,no_root_squash) localhost(rw)'

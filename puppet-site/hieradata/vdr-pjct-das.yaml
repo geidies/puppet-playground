@@ -1,11 +1,33 @@
 ---
 classes:
+  - basic
+  - basic::directory
+  - basic::nfsmount
   - monit
   - java
   - webapp
   - webapp::instance
+  - deployer::war
 
 webapp::instance::instance:
   0:
-    appid: 'company-news'
+    appid: 'companyNews'
     javahome: '/etc/alternatives/jre_openjdk'
+
+basic::directory::instance:
+  '/home/russell/persistence':
+    owner: tomcat
+    group: tomcat
+    mode: 0600
+
+basic::nfsmount::instance:
+  '/home/russell':
+    server: '10.201.0.200'
+    share: '/home/russell'
+    options: rw
+
+deployer::war::instance:
+  companyNews:
+    version: '0.1'
+    remoteserver: 'https://www.dropbox.com/sh/lqesai2ywc2axve/AACWIRv2V53OOevkl__1U59fa'
+

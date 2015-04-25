@@ -23,6 +23,9 @@ loadbalance::backend::instance:
     ip_addresses:
       - '10.201.0.12'
       - '10.201.0.13'
+    member_options:
+      - 'check'
+      - 'check backup'
     ports: 8080
     options:
       mode: 'http'

@@ -1,5 +1,6 @@
 ---
 classes:
+  - deployer::zip
   - monit
   - staticweb
   - staticweb::instance
@@ -7,3 +8,8 @@ classes:
 staticweb::instance::instance:
   'thoughtworks.example.net':
     listen_port: 8080
+
+deployer::zip::instance:
+  '/var/www/thoughtworks.example.net':
+    remoteserver: 'https://www.dropbox.com/s/7dtgsji7g29xpuh/'
+    artefact: 'static.zip'
