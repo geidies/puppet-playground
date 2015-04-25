@@ -22,6 +22,12 @@ define staticweb::nginx (
       notify  => Service['nginx'],
     }
 
+    file { "/etc/nginx/sites-enabled/$vhost.conf":
+      ensure  => link,
+      target  => "/etc/nginx/sites-available/$vhost.conf",
+      require => File["/etc/nginx/sites-available/$vhost.conf"],
+    }
+
     file { "/var/www/$vhost":
       ensure  => directory,
       owner   => 'nginx',
