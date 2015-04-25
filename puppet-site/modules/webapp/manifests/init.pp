@@ -19,4 +19,8 @@ class webapp {
       require => File['/opt/apps'],
     }
 
+    package { 'redhat-lsb':
+      ensure => present,
+    }
+
 }

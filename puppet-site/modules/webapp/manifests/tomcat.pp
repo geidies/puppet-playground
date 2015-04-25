@@ -42,5 +42,9 @@ define webapp::tomcat (
       instance_basedir => $tomcat_instance_basedir,
       java_home        => $javahome,
       manage           => $manage,
+    } ->
+    file { "$tomcat_instance_basedir/$appid-$instanceid/webapps/ROOT.war":
+      ensure => link,
+      target => "/opt/apps/web/$appid.war",
     }
 }
