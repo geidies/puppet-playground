@@ -15,6 +15,7 @@ webapp::instance::instance:
     javahome: '/etc/alternatives/jre_openjdk'
     setenv: 
       - 'ADD_JAVA_OPTS="
+      -server
       -XX:+UseParNewGC
       -XX:+UseConcMarkSweepGC
       -XX:CMSInitiatingOccupancyFraction=65

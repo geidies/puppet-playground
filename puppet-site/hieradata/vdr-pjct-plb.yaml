@@ -7,22 +7,22 @@ classes:
 loadbalance::backend::instance:
   static:
     server_names:
-      - 'vdr-pjct-dws-001'
-      - 'vdr-pjct-dws-002'
+      - 'vdr-pjct-pws-001'
+      - 'vdr-pjct-pws-002'
     ip_addresses:
-      - '10.201.0.2'
-      - '10.201.0.3'
+      - '10.201.1.2'
+      - '10.201.1.3'
     ports: 8080
     options:
       mode: 'http'
       balance: 'roundrobin'
   dynamic:
     server_names:
-      - 'vdr-pjct-das-001'
-      - 'vdr-pjct-das-002'
+      - 'vdr-pjct-pas-001'
+      - 'vdr-pjct-pas-002'
     ip_addresses:
-      - '10.201.0.12'
-      - '10.201.0.13'
+      - '10.201.1.12'
+      - '10.201.1.13'
     member_options:
       - 'check'
       - 'check backup'

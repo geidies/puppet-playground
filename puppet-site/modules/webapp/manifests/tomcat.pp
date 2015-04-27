@@ -7,18 +7,19 @@ define webapp::tomcat (
     $manage                  = true,
     $tomcat_instance_basedir = '/opt/apps/tomcat',
     $user                    = 'tomcat',
-    $setenv                  = [],
+    $setenv                  = ['JAVA_XMX="128M"'],
 
   ){
     $port = $baseport
     $serverport = $baseport+1
     $ajpport = $baseport+2
+    $app = "${appid}-${instanceid}"
 
     tomcat::connector { "http-${port}-${appid}":
       ensure   => present,
       owner    => $user,
       group    => $user,
-      instance => "$appid-$instanceid",
+      instance => $app,
       protocol => 'org.apache.coyote.http11.Http11NioProtocol',
       port     => "${port}",
       manage   => true,
@@ -32,7 +33,7 @@ define webapp::tomcat (
         version          => 7,
         instance_basedir => $tomcat_instance_basedir,
     } ->
-    tomcat::instance { "$appid-$instanceid":
+    tomcat::instance { $app:
       ensure           => $ensure,
       owner            => $user,
       connector        => [$appid],
@@ -43,8 +44,18 @@ define webapp::tomcat (
       java_home        => $javahome,
       manage           => $manage,
     } ->
-    file { "$tomcat_instance_basedir/$appid-$instanceid/webapps/ROOT.war":
+    file { "${tomcat_instance_basedir}/${app}/webapps/ROOT.war":
       ensure => link,
-      target => "/opt/apps/web/$appid.war",
+      target => "/opt/apps/web/${appid}.war",
+    }
+
+    $monitname = "tomcat-${app}"
+    $pidfile = "${tomcat_instance_basedir}/${app}/temp/tmocat.pid"
+    monit::monitor { $monitname:
+      pidfile => $pidfile,
+      ip_port => $port,
+      uid     => 'tomcat',
+      gid     => 'tomcat',
+      checks  => ["if failed port ${port} protocol HTTP request \"/\" then restart"],
     }
 }
