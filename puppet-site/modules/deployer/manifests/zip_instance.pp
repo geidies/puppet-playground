@@ -8,7 +8,8 @@ define deployer::zip_instance (
     remote_location => "$remoteserver/$artefact",
   } ->
   exec { "unzip $artefact":
-    command => "unzip /tmp/$artefact -d $target"
+    command => "unzip -o /tmp/$artefact -d $target",
+    creates => "${target}/images/logo.png"
   }
 
 }
